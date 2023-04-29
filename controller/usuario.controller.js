@@ -1,7 +1,7 @@
 const usuarioService = require("../service/usuario.service");
 const mongoose = require("mongoose");
 
-const find = async (req, res) => {
+const findByIdUsuario = async (req, res) => {
     try {
         const id = new mongoose.Types.ObjectId(req.params.id);
         let found = false;
@@ -9,7 +9,7 @@ const find = async (req, res) => {
         const usuario = await usuarioService.findByIdUsuario(id);
 
         if (usuario != null) {
-            found == true;
+            found = true;
         }
 
         if (!found) {
@@ -100,7 +100,7 @@ const deleteUsuario = async (req, res) => {
 }
 
 module.exports = {
-    find,
+    findByIdUsuario,
     findAllUsuarios,
     createUsuario,
     updateUsuario,
