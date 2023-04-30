@@ -27,8 +27,8 @@ module.exports = {
     findAllUsuario,
     createUsuario,
     updateUsuario,
-    deleteUsuario
-    
+    deleteUsuario,
+    loginService
 }
 
 //loginService

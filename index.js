@@ -6,6 +6,7 @@ const usuario = require("./router/usuario.router");
 const usuarioService = require("./service/usuario.service");
 
 
+
 connectToDatabase();
 
 const port = 3000;
@@ -25,7 +26,7 @@ app.get("/mongo", (req, res) => {
 
 app.post("/login", async (req, res) => {
     try{
-        const { email, senha } = req.body;
+    const { email, senha } = req.body;
     const user = await usuarioService.loginService(email);
 
     if(!user){
@@ -35,15 +36,15 @@ app.post("/login", async (req, res) => {
     if(senha != user.senha){
         return res.status(400).send({ message: "Senha inválida" });
     }
-    user.token = token();
-    await usuarioService.updateToken(user);
-    console.log(user);
-
-    res.send(user)
+    //user.token = token();
+    //await usuarioService.updateToken(user);
+   // console.log(user);
+    res.status(200).send(user);
+    
     }catch(err){
         console.log(`erro: ${err}`);
     }
-    res.status(200).send(user);
+    
 });
 
 const token = function(){
